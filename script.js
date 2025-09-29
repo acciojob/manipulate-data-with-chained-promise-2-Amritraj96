@@ -1,6 +1,3 @@
-//your JS code here. If required.
-// script.js
-
 // Utility function to return a promise with a delay
 function delay(ms, value) {
   return new Promise(resolve => {
@@ -12,9 +9,9 @@ function delay(ms, value) {
 function manipulateArray() {
   const outputDiv = document.getElementById("output");
 
-  // Step 1: Start with initial array after 3 sec delay
-  delay(3000, [1, 2, 3, 4])
-    // Step 2: Filter evens after 1 sec
+  // Start immediately with the array [1,2,3,4]
+  Promise.resolve([1, 2, 3, 4])
+    // Step 1: Filter evens after 1 second
     .then(arr => {
       const evens = arr.filter(num => num % 2 === 0);
       return delay(1000, evens).then(result => {
@@ -22,7 +19,7 @@ function manipulateArray() {
         return result;
       });
     })
-    // Step 3: Multiply by 2 after 2 sec
+    // Step 2: Multiply evens by 2 after 2 more seconds
     .then(evens => {
       const multiplied = evens.map(num => num * 2);
       return delay(2000, multiplied).then(result => {
@@ -35,3 +32,4 @@ function manipulateArray() {
 
 // Call the function on page load
 manipulateArray();
+
